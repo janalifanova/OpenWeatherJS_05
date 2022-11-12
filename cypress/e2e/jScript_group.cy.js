@@ -73,7 +73,7 @@ describe('Group jScript_group', () => {
         cy.visit('https://openweathermap.org');
         cy.get('#desktop-menu [href$=-dashboard]').click();
         cy.url().should('include', '/weather-dashboard');
-    })
+    });
     
     it('AT_008.002 | Main menu > Guide | Verify the first button "Learn more" is clickable and user will be redirected new url', () => {
         cy.visit('https://openweathermap.org');
@@ -81,4 +81,12 @@ describe('Group jScript_group', () => {
         cy.get("ol [href='/api#current']").click()
         cy.url().should('include', '/api#current')
     })
+    
+     it('AT_022.002 | Footer > Ensure Facebook icon redirection', () => {
+        cy.visit('https://openweathermap.org/');
+        cy.get('.social a:first-child').should('be.visible');
+        cy.get('.social a:first-child').invoke('removeAttr', 'target').click({force: true});
+        cy.url().should('include','270748973021342');
+    });
 });
+
