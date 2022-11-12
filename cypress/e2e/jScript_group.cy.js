@@ -68,4 +68,10 @@ describe('Group jScript_group', () => {
         cy.visit('https://openweathermap.org/');
         cy.get('.social a').should('have.length', 6).and('be.visible');
     });
+    
+    it('AT_033.001 | Header > Navigation > Verify "Dashboard" menu link', () => {
+        cy.visit('https://openweathermap.org');
+        cy.get('#desktop-menu [href$=-dashboard]').click();
+        cy.url().should('include', '/weather-dashboard');
+    });
 });
