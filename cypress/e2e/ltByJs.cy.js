@@ -12,5 +12,13 @@ describe('Group lt_by_js', () => {
         cy.get('#desktop-menu [href="/guide"]').click()
         cy.url().should('eq', 'https://openweathermap.org/guide')
     });
+
+    it('AT_002.006 | Our Initiatives > Verifying the websites logo is clickable and redirects User to the Main page', function (){
+        cy.visit('https://openweathermap.org/')
+        cy.get('#desktop-menu a[href="/our-initiatives"]').click();
+        cy.get('.logo').click()
+        cy.url().should('eq', 'https://openweathermap.org/');
+        
+    });
     
 });
