@@ -1,19 +1,19 @@
 /// <reference types="cypress"/>
 
 describe('Group lt_by_js', () => {
-   xit('AT_033.001 | Header > Navigation > Verify "Dashboard" menu item', () => {
+   it('AT_033.001 | Header > Navigation > Verify "Dashboard" menu item', () => {
         cy.visit('https://openweathermap.org');
         cy.get('#desktop-menu [href$=-dashboard]').click();
         cy.url().should('include', '/weather-dashboard');
     });
 
-    xit('AT_033.002 | Header > Navigation > Verify "Guide" menu item', () => {
+    it('AT_033.002 | Header > Navigation > Verify "Guide" menu item', () => {
         cy.visit('https://openweathermap.org/')
         cy.get('#desktop-menu [href="/guide"]').click()
         cy.url().should('eq', 'https://openweathermap.org/guide')
     });
 
-    xit('AT_002.006 | Our Initiatives > Verifying the websites logo is clickable and redirects User to the Main page', function (){
+    it('AT_002.006 | Our Initiatives > Verifying the websites logo is clickable and redirects User to the Main page', function (){
         cy.visit('https://openweathermap.org/')
         cy.get('#desktop-menu a[href="/our-initiatives"]').click();
         cy.get('.logo').click()
@@ -21,7 +21,7 @@ describe('Group lt_by_js', () => {
         
     });
 
-    xit('AT_002.002 | Pricing > Verifying the website"s logo is clickable and redirects User to the Main page', () => {
+    it('AT_002.002 | Pricing > Verifying the website"s logo is clickable and redirects User to the Main page', () => {
 
         const pricing = '#desktop-menu a[href="/price"]'
         cy.visit('https://openweathermap.org/')
@@ -32,7 +32,7 @@ describe('Group lt_by_js', () => {
 
     });
 
-    xit('AT_009.001 | Main menu > After clicking Marketplace User is redirected to the Marketplace page', () => {
+    it('AT_009.001 | Main menu > After clicking Marketplace User is redirected to the Marketplace page', () => {
         const marketplace = '#desktop-menu a[href*="marketplace"]'
 
         cy.visit('https://openweathermap.org/')
