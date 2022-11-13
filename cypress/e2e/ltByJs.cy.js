@@ -66,4 +66,11 @@ describe('Group lt_by_js', () => {
         cy.get('.panel-body').should('have.text', 'You need to sign in or sign up before continuing.');
         
     });
+
+    it('AT_033.003 | Header > Navigation> Verify "API" menu link', function () {
+        cy.visit('https://openweathermap.org/')
+        cy.get('#desktop-menu a[href="/api"]').click()
+        cy.url().should('eq', 'https://openweathermap.org/api')
+    })
+
 });
