@@ -67,6 +67,12 @@ describe('Group lt_by_js', () => {
         
     });
 
+    it('AT_033.003 | Header > Navigation> Verify "API" menu link', function () {
+        cy.visit('https://openweathermap.org/')
+        cy.get('#desktop-menu a[href="/api"]').click()
+        cy.url().should('eq', 'https://openweathermap.org/api')
+    });
+
     it('AT_001.007 | Main page > Section with search > Verify entered a City name into the Search city field', function () {
         cy.visit('https://openweathermap.org/')
         cy.get('.search-block .search').type("Paris");
