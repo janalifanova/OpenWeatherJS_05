@@ -67,7 +67,7 @@ it('AT_010.004 | Marketplace > Verify all orange links on the page', () => {
             cy.wrap($el).parents('.scrolling-container-header').next().find('.daily-detail-container').should('be.visible')
           }else {
             cy.wrap($el).click().parents('.scrolling-container-header').next().find('.daily-detail-container').should('be.visible')
-          }       
+          }      
     })
 
 });
