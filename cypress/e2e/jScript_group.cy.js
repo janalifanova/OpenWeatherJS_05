@@ -118,6 +118,11 @@ describe('Group jScript_group', () => {
         cy.get('div#desktop-menu a[href*="examples"]').click();
         cy.get('a[href="http://wordpress.org/extend/plugins/awesome-weather/"]').invoke('removeAttr', 'target').click();
         cy.url().should('eq', 'https://wordpress.org/plugins/awesome-weather/');
-    })  
-});
+    });
 
+    it('AT_050.002 | Footer > Verify that user can be redirected to the "Terms and conditions of sale" page', () => {
+        cy.visit('https://openweathermap.org');
+        cy.get('[href*="conditions_of_sale"]').invoke('removeAttr', 'target').click()
+        cy.url().should('eq', 'https://openweather.co.uk/storage/app/media/Terms/Openweather_terms_and_conditions_of_sale.pdf')
+    });
+});
