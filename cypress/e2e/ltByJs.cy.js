@@ -66,4 +66,15 @@ describe('Group lt_by_js', () => {
         cy.get('.panel-body').should('have.text', 'You need to sign in or sign up before continuing.');
         
     });
+
+    it('AT_001.007 | Main page > Section with search > Verify entered a City name into the Search city field', function () {
+        cy.visit('https://openweathermap.org/')
+        cy.get('.search-block .search').click().type("Paris");
+        cy.get('.search .button-round').click()
+        cy.get('.page-container .search-dropdown-menu li:nth-child(1)').click();
+        cy.get('div[data-v-3e6e9f12] h2').should('have.text', 'Paris, FR');
+        cy.get('div[data-v-3e6e9f12] h2').contains('Paris').should('be.visible');
+        cy.get('.heading').should('contain', '°C')
+    
+    });
 });
