@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 describe('Group lt_by_js', () => {
-    it('AT_033.001 | Header > Navigation > Verify "Dashboard" menu item', () => {
+   it('AT_033.001 | Header > Navigation > Verify "Dashboard" menu item', () => {
         cy.visit('https://openweathermap.org');
         cy.get('#desktop-menu [href$=-dashboard]').click();
         cy.url().should('include', '/weather-dashboard');
@@ -154,6 +154,13 @@ describe('Group lt_by_js', () => {
         cy.visit('https://openweathermap.org')
         cy.get('a[href="/widgets-constructor"]').click();
         cy.url().should('eq', 'https://openweathermap.org/widgets-constructor')
+        
+    });
+
+    it('AT_033.006 | Header > Navigation>> Verify "Partners" menu link', function () {
+        cy.visit('https://openweathermap.org')
+        cy.get('#desktop-menu a[href="/examples"]').click();
+        cy.url().should('eq', 'https://openweathermap.org/examples')
         
     });
 
