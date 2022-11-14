@@ -29,6 +29,17 @@ describe('groupBugHunters', () => {
     cy.url().should('eq', 'https://apps.apple.com/gb/app/openweather/id1535923697')
   })
 
+
+  it("AT_027.003 |Maps > Section with the scale", function () {
+    cy.visit('https://openweathermap.org');
+    cy.get('#desktop-menu [href="/weathermap"]').click({ force: true });
+    cy.url().should('include', '/weathermap');
+    cy.get('[for="Global Precipitation"]').click({ force: true });
+    cy.get('.scale-details >div:first-child')
+      .should('contain', 'Precipitation, mm/h');
+
+  })
+
   it('AT_008.004 | Main menu > Guide | Verify the button "Subscribe to One Call by Call" is clickable and user be redirected new url', () => {
     cy.visit('https://openweathermap.org/');
     cy.get('#desktop-menu').contains('Guide').click({ force: true });
@@ -56,4 +67,5 @@ describe('groupBugHunters', () => {
     cy.get('#desktop-menu a[href="/guide"]').click()
     cy.url().should('include', '/guide')
   });
+
 })
