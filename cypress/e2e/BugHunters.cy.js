@@ -29,4 +29,10 @@ describe('groupBugHunters', () => {
       cy.url().should('eq', 'https://apps.apple.com/gb/app/openweather/id1535923697')        
     })
     
+    it("AT_029.003 | Footer >Download OpenWeather App> Download on the Google play' button link", function() {
+      cy.visit('https://openweathermap.org/')
+      cy.get('.my-5 a[href*=google]').invoke('removeAttr', 'target').click()
+      cy.url().should('eq', 'https://play.google.com/store/apps/details?id=uk.co.openweather')        
+    })
+
 })
