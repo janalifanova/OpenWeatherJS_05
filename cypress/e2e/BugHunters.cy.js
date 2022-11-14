@@ -28,5 +28,10 @@ describe('groupBugHunters', () => {
       cy.get('.my-5 a[href*=apple]').invoke('removeAttr', 'target').click()
       cy.url().should('eq', 'https://apps.apple.com/gb/app/openweather/id1535923697')        
     })
+
+    it("AT_027.003 |Maps > Section with the scale", function() {
+      cy.visit('https://openweathermap.org/')
+              
+    })
     
 })
