@@ -28,6 +28,15 @@ describe('groupBugHunters', () => {
       cy.get('.my-5 a[href*=apple]').invoke('removeAttr', 'target').click()
       cy.url().should('eq', 'https://apps.apple.com/gb/app/openweather/id1535923697')        
     })
+
+    it('AT_018.005 | Support > Drop down menu> FAQ link opens',()=> {
+      let faqInSupport = '.dropdown-menu a[href="/faq"]'
+      cy.visit('https://openweathermap.org/')
+      cy.get('#support-dropdown').click()
+      cy.get('#support-dropdown-menu').should('be.visible')
+      cy.get(faqInSupport).click()
+      cy.url().should('contain', '/faq')
+    })
     
     it("AT_029.003 | Footer >Download OpenWeather App> Download on the Google play' button link", function() {
       cy.visit('https://openweathermap.org/')
