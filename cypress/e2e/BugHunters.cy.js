@@ -29,6 +29,7 @@ describe('groupBugHunters', () => {
     cy.url().should('eq', 'https://apps.apple.com/gb/app/openweather/id1535923697')
   })
 
+
   it("AT_027.003 |Maps > Section with the scale", function () {
     cy.visit('https://openweathermap.org');
     cy.get('#desktop-menu [href="/weathermap"]').click({ force: true });
@@ -38,5 +39,33 @@ describe('groupBugHunters', () => {
       .should('contain', 'Precipitation, mm/h');
 
   })
+
+  it('AT_008.004 | Main menu > Guide | Verify the button "Subscribe to One Call by Call" is clickable and user be redirected new url', () => {
+    cy.visit('https://openweathermap.org/');
+    cy.get('#desktop-menu').contains('Guide').click({ force: true });
+    cy.get('center a[href="/price"]').click();
+    cy.url().should('contain', '/price');
+  })
+
+  it('AT_018.005 | Support > Drop down menu> FAQ link opens', () => {
+    let faqInSupport = '.dropdown-menu a[href="/faq"]'
+    cy.visit('https://openweathermap.org/')
+    cy.get('#support-dropdown').click()
+    cy.get('#support-dropdown-menu').should('be.visible')
+    cy.get(faqInSupport).click()
+    cy.url().should('contain', '/faq')
+  })
+
+  it("AT_029.003 | Footer >Download OpenWeather App> Download on the Google play' button link", function () {
+    cy.visit('https://openweathermap.org/')
+    cy.get('.my-5 a[href*=google]').invoke('removeAttr', 'target').click()
+    cy.url().should('eq', 'https://play.google.com/store/apps/details?id=uk.co.openweather')
+  })
+
+  it('AT_008.007 | Main menu > Guide > Verify user will be redirected to new url "/guide"', () => {
+    cy.visit('https://openweathermap.org/')
+    cy.get('#desktop-menu a[href="/guide"]').click()
+    cy.url().should('include', '/guide')
+  });
 
 })
