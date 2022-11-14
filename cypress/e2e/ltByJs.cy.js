@@ -150,4 +150,11 @@ describe('Group lt_by_js', () => {
   
     });
 
+    it('AT_021.002 | Footer >Verify Widgets is clickable and redirects User to the Widgets page', function () {
+        cy.visit('https://openweathermap.org')
+        cy.get('a[href="/widgets-constructor"]').click();
+        cy.url().should('eq', 'https://openweathermap.org/widgets-constructor')
+        
+    });
+
 });
