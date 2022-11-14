@@ -159,4 +159,12 @@ describe('Group jScript_group', () => {
          cy.get('#desktop-menu a[href="/price"]').should('have.text','Pricing').click()
         cy.url().should('eq','https://openweathermap.org/price')
     });
+    
+        it('AT_022.003 | Footer > Verify Tweeter icon redirection', () => {
+        cy.visit('https://openweathermap.org/');
+        cy.get('.social a:nth-child(2)').should('be.visible');
+        cy.get('.social a:nth-child(2)').invoke('removeAttr', 'target').click({force: true});
+        cy.url().should('be.equal','https://twitter.com/OpenWeatherMap');
+    });
 });
+
