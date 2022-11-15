@@ -209,5 +209,13 @@ describe('Group jScript_group', () => {
         cy.url().should('eq', 'https://openweathermap.org/');
         cy.get('h1 .orange-text').should('have.text', 'OpenWeather');
     });
+
+    it('AT_033.009 | Header > Navigation > Support > "How to start" menu link', () => {
+        cy.get('#support-dropdown').click();
+        cy.get('#support-dropdown-menu').should('be.visible');
+        cy.get('#support-dropdown-menu a[href="/appid"]').click();
+
+        cy.url().should('eq','https://openweathermap.org/appid');
+    });
 });
 
