@@ -208,5 +208,12 @@ describe('Group jScript_group', () => {
         cy.get('div.grid-container [href="/api"]').click();
         cy.url().should('include', 'https://openweathermap.org/api');
     });
+
+    it('AT_028.005 | Footer > About us > Verify New and Updates button', () => {
+        cy.visit('https://openweathermap.org/');
+        cy.get('a[href="/about-us"]').click();
+        cy.get('a.round[href*="blog"]').invoke('removeAttr', 'target').click();
+        cy.url().should('include', '/blog/category/weather');
+    })
 });
 
