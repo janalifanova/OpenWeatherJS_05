@@ -3,7 +3,8 @@
 describe('group_javascript_for_qas', () => {
     it('AT_028.001 | Footer > About us > Verify "About us" link redirects to the corresponding page', function () {
         cy.visit('https://openweathermap.org/');
-        console.log("Hello");
+        cy.get('a[href="/about-us"]').click();
+        cy.url().should('include','/about-us');
     });
 
     it('AT_015.002 | Header > Support > Ask a question > Verify error message for an unauthorised user', function () {
