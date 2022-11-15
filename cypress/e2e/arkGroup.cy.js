@@ -109,3 +109,9 @@ it('AT_010.004 | Marketplace > Verify all orange links on the page', () => {
         })
       })
 });
+
+it('AT_002.013 | Header > Verifying the Main page is open after clicking the logo', () => {
+  cy.visit('https://openweathermap.org');
+  cy.get('.logo').click();
+  cy.url().should('eq', 'https://openweathermap.org/');
+});
