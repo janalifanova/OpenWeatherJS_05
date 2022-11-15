@@ -230,5 +230,14 @@ describe('Group jScript_group', () => {
 
         cy.get('.has-error').should('have.text', 'reCAPTCHA verification failed, please try again.');
     });
+    
+    it('AT_002.011 | Header > Clicking the logo> Verify the Main page is opened after clicking the logo.', () => {
+        cy.visit('https://openweathermap.org/api');
+
+        cy.get('#first-level-nav .logo').invoke('removeAttr', 'target').click();
+
+        cy.url().should('eq', 'https://openweathermap.org/');
+        cy.get('h1 .orange-text').should('have.text', 'OpenWeather');
+    });
 });
 
