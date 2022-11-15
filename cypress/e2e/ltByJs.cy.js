@@ -220,5 +220,5 @@ describe('Group lt_by_js', () => {
 
         cy.get('.has-error .help-block').should('have.text', 'reCAPTCHA verification failed, please try again.')
 
-    });
+    })
 })
