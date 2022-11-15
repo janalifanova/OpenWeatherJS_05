@@ -208,7 +208,7 @@ describe('Group lt_by_js', () => {
         
     })
 
-    it('AT_014 .002| Support > Ask a question>Check captcha message', function () {
+    it('AT_014.002| Support > Ask a question > Check captcha message', function () {
         
         cy.get('#support-dropdown').click()
         cy.get('.dropdown-menu a[href="https://home.openweathermap.org/questions"]').invoke('removeAttr', 'target').click()
