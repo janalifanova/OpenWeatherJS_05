@@ -254,6 +254,12 @@ describe('Group jScript_group', () => {
         cy.get('h1 .orange-text').should('have.text', 'OpenWeather');
     });
 
+    it('AT_044.001 | Footer > PopUps > Manage cookies', function () {
+        cy.get('#stick-footer-panel .stick-footer-panel').should('be.visible');
+        cy.get('#stick-footer-panel button').should('have.text', 'Allow all');
+        cy.get('#stick-footer-panel a').should('include.text', 'Manage cookies');
+    });
+    
     it('AT_012.007 | Partners > CMS > Verification the number of Buttons', () => {
         cy.get('#desktop-menu a[href="/examples"]').click();
         cy.get('.breadcrumb-title').should('have.text', 'Partners and solutions');
