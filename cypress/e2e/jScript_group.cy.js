@@ -254,6 +254,15 @@ describe('Group jScript_group', () => {
         cy.get('h1 .orange-text').should('have.text', 'OpenWeather');
     });
 
+    it('AT_033.015 | Header > Navigation > Support > "Ask a question" menu link', function () {
+        cy.get('#support-dropdown').click();
+        cy.get('#support-dropdown-menu').should('be.visible');
+        cy.get('#support-dropdown-menu a[href*="/questions"]').invoke('removeAttr', 'target').click();
+
+        cy.url().should('eq', 'https://home.openweathermap.org/questions');
+        cy.get('.headline').should('have.text', 'Ask a question');
+    });
+        
     it('AT_044.001 | Footer > PopUps > Manage cookies', function () {
         cy.get('#stick-footer-panel .stick-footer-panel').should('be.visible');
         cy.get('#stick-footer-panel button').should('have.text', 'Allow all');
