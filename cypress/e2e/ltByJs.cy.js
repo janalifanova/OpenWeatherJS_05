@@ -73,7 +73,7 @@ describe('Group lt_by_js', () => {
         cy.get('#desktop-menu a[href="https://openweathermap.org/home/sign_in"]').click()
         cy.url().should('eq', 'https://home.openweathermap.org/users/sign_in')
         cy.get('.input-group #user_email').click().type('catia.romankova@yandex.by')
-        cy.get('.input-group #user_password').click().type('123456789')
+        cy.get('.input-group #user_password').click().type(this.data.password1)
         cy.get('#new_user :nth-child(7)').click()
         cy.get('.panel-body').should('have.text', 'Signed in successfully.')
 
@@ -93,12 +93,12 @@ describe('Group lt_by_js', () => {
 
     it('AT_001.007 | Main page > Section with search > Verify entered a City name into the Search city field', function () {
      
-        cy.get('.search-block .search').type('Paris')
+        cy.get('.search-block .search').type(this.data.cityName)
         cy.get('.search .button-round').click()
         cy.get('.page-container .search-dropdown-menu li:nth-child(1)').click()
 
         cy.get('div[data-v-3e6e9f12] h2').should('have.text', 'Paris, FR')
-        cy.get('div[data-v-3e6e9f12] h2').contains('Paris').should('be.visible')
+        cy.get('div[data-v-3e6e9f12] h2').contains(this.data.cityName).should('be.visible')
         cy.get('.heading').should('contain', '°C')
 
     })
@@ -213,9 +213,9 @@ describe('Group lt_by_js', () => {
         cy.get('#support-dropdown').click()
         cy.get('.dropdown-menu a[href="https://home.openweathermap.org/questions"]').invoke('removeAttr', 'target').click()
 
-        cy.get('#question_form_email').type('gromStr@gmail.com')
+        cy.get('#question_form_email').type(this.data.email)
         cy.get('#question_form_subject').select('Technical questions about products: documentations, API request/response, API errors')
-        cy.get('#question_form_message').type('I want to check form')
+        cy.get('#question_form_message').type(this.data.message)
         cy.get('.btn-default').click()
 
         cy.get('.has-error .help-block').should('have.text', 'reCAPTCHA verification failed, please try again.')
