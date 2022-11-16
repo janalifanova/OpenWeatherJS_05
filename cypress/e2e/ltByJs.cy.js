@@ -31,6 +31,7 @@ describe('Group lt_by_js', () => {
         cy.get('.logo').click()
 
         cy.url().should('eq', 'https://openweathermap.org/')
+        cy.get('h1 .orange-text').should('have.text', 'OpenWeather')
         
     })
 
@@ -175,14 +176,18 @@ describe('Group lt_by_js', () => {
     it('AT_021.002 | Footer >Verify Widgets is clickable and redirects User to the Widgets page', function () {
       
         cy.get('a[href="/widgets-constructor"]').click()
+
         cy.url().should('eq', 'https://openweathermap.org/widgets-constructor')
+        cy.get('.breadcrumb-title').should('have.text', 'Widgets constructor')
         
     })
 
     it('AT_033.006 | Header > Navigation>> Verify "Partners" menu link', function () {
       
         cy.get('#desktop-menu a[href="/examples"]').click()
+
         cy.url().should('eq', 'https://openweathermap.org/examples')
+        cy.get('.breadcrumb-title').should('have.text', 'Partners and solutions')
         
     })
 
