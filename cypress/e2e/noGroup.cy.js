@@ -63,4 +63,20 @@ it('AT_010.006 | Marketplace > Verify all orange links on the page', () => {
       .get('.active').should('contain.text', 'New Products')
   })
 
-});
+  it('AT_043.004 | NavBar > User > Verify that tab "New Products" has 3 text-block', function() {
+    const userName = 'nadiakoluzaeva@gmail.com';
+    const password = 'OpenWeatherJS_05';
+    
+    cy.visit('https://openweathermap.org/')
+    cy.get('#desktop-menu a[href="https://openweathermap.org/home/sign_in"]').click()
+    cy.get('#user_email').type(userName).should('have.value', userName)
+    cy.get('#user_password').type(password).should('have.value', password)
+    cy.get('#new_user input[value="Submit"]').click()
+      .url().should('include', 'home.openweathermap.org')
+    cy.get('#myTab a[href="/"]').should('have.text', 'New Products').click()
+    cy.get('.container .text-block').should('have.length', 3)
+    cy.get('.container .text-block').each(($el, idx) => {
+      expect($el.text()).to.include(this.data.textBlocs[idx])
+    })
+})
+})
