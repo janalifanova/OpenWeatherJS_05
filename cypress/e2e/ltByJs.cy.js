@@ -213,4 +213,13 @@ describe('Group lt_by_js', () => {
         cy.url().should('eq', 'https://home.openweathermap.org/history_bulks/new')
         cy.get('h4.heading').should('have.text', 'Create New History Bulk')
    })
+
+   it('AT_025.009 | Main menu > Dashboard > Verify the first button "Try the Dashboard" is clickable and redirects User to the Sign in page', function () {
+        cy.get('#desktop-menu a[href="/weather-dashboard"]').click()
+
+        cy.get('.col-lg-6 .btn_like').invoke('removeAttr', 'target').click()
+
+        cy.url().should('include', '/users/sign_in')
+        cy.get('.first-child').should('have.text', 'Sign In To Your Account')
+    })
 })
