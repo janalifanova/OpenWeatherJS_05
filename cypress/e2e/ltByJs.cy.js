@@ -57,8 +57,8 @@ describe('Group lt_by_js', () => {
     it('AT_031.002 | Sign In > Account Dropdown Menu > Verify user is able to log out', function () {    
         cy.get('#desktop-menu a[href="https://openweathermap.org/home/sign_in"]').click()
         cy.url().should('eq', 'https://home.openweathermap.org/users/sign_in')
-        cy.get('.input-group #user_email').click().type(this.data.email)
-        cy.get('.input-group #user_password').click().type(this.data.password1)
+        cy.get('.input-group #user_email').type(this.data.email)
+        cy.get('.input-group #user_password').type(this.data.password1)
         cy.get('#new_user :nth-child(7)').click()
         cy.get('.panel-body').should('have.text', 'Signed in successfully.')
 
