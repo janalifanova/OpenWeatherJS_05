@@ -286,6 +286,13 @@ describe('Group jScript_group', () => {
         cy.get('.sign-form').should('exist');
     });
 
+    it('AT_038.001 | For business page > Verify that user can be redirected to the business page', function () {
+        cy.get('#desktop-menu a[href="https://openweather.co.uk"]').invoke('removeAttr','target').click({force: true});
+
+        cy.url().should('eq', 'https://openweather.co.uk/');
+        cy.get('h1').should('include.text','for business');
+    });
+
     it('AT_044.002 | Footer > PopUps > Manage cookies', function () {
         cy.get('#stick-footer-panel a').should('be.visible');
         cy.get('#stick-footer-panel a').should('include.text', 'Manage cookies');
