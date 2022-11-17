@@ -195,4 +195,11 @@ describe('Group lt_by_js', () => {
         cy.url().should('eq', 'https://openweathermap.org/')
         cy.get('h1 .orange-text').should('have.text', 'OpenWeather')
     })
+
+    it('AT_025.008 | Main menu > Dashboard > After clicking "Dashboard" item on bar menu User is redirected to Dashboard page', function () {
+        cy.get('#desktop-menu a[href="/weather-dashboard"]').click()
+
+        cy.url().should('contain', '/weather-dashboard')
+        cy.get('.breadcrumb-title').should('have.text', 'Weather dashboard')
+    })
 })
