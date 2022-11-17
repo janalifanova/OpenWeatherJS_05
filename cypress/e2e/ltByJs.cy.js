@@ -222,4 +222,25 @@ describe('Group lt_by_js', () => {
         cy.url().should('include', '/users/sign_in')
         cy.get('.first-child').should('have.text', 'Sign In To Your Account')
     })
+
+    it('AT_006.002 | Sign in > Sign in to Your Account', function () {
+        let signinPage = '#desktop-menu a[href="https://openweathermap.org/home/sign_in"]'
+        let emailField = '.input-group #user_email'
+        let passowrField = '#user_password'
+        let remeberMe = '.user_remember_me'
+        let buttonSubmit = '#new_user :nth-child(7)'
+        let textSignIn = '.panel-body'
+        let userName = '.inner-user-container'
+        let logout = '.dropdown-menu .logout'
+      
+        cy.get(signinPage).click()
+        cy.get(emailField).type(this.data.email)
+        cy.get(passowrField).type(this.data.password1)
+        cy.get(remeberMe).click()
+        cy.get(buttonSubmit).click()
+
+        cy.get(textSignIn).should('have.text', 'Signed in successfully.')
+        cy.get(userName).click()
+        cy.get(logout).click()         
+    })
 })
