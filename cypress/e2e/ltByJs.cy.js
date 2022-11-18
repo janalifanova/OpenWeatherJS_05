@@ -280,8 +280,10 @@ describe('Group lt_by_js', () => {
         let errorMessage = '#error-key'
 
         cy.get(widgetsPage).click()
+
         cy.get(aryField).type(this.data.invalidApi)
         cy.get(cityField).click()
+        
         cy.get(errorMessage).should('have.text', 'Validation error')
     })
     
