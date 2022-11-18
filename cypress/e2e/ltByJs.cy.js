@@ -272,4 +272,16 @@ describe('Group lt_by_js', () => {
         cy.get(logout).click()
         cy.get(text).should('have.text', 'You need to sign in or sign up before continuing.')
     })
+
+    it('AT_021.001 | Footer > Widgets>Invalid API',function ()  {
+        let widgetsPage = 'a[href="/widgets-constructor"]'
+        let aryField = '#api-key'
+        let cityField = '#search-city'
+        let errorMessage = '#error-key'
+
+        cy.get(widgetsPage).click()
+        cy.get(aryField).type(this.data.invalidApi)
+        cy.get(cityField).click()
+        cy.get(errorMessage).should('have.text', 'Validation error')
+    })
 })
