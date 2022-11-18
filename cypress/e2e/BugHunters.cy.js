@@ -207,5 +207,9 @@ describe('groupBugHunters', () => {
     cy.get('input[value="Change Password"]').click()
     cy.get('.panel-body').should('be.visible').and('have.text','Password was changed successfully')
 })
-
+  it('AT_027.005 | Maps > Section with the scale > The scale names matches the label after selecting "Wind speed"', function() {
+    cy.get('#desktop-menu a[href="/weathermap"]'). click()
+    cy.get('label[for="Wind speed"]'). click()
+    cy.get('.scale-details:first-child').should('contain.contain.text', 'Wind speed')
+})
 })
