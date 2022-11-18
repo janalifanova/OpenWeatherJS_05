@@ -253,6 +253,7 @@ describe('Group lt_by_js', () => {
         let userName = '.inner-user-container'
         let logout = '.dropdown-menu .logout'
         let seeDropDowmMenu = '#user-dropdown'
+        let existDropDownMenu = '#user-dropdown-menu'
         let dropDownMenu = '#user-dropdown-menu li'
  
         cy.get(signinPage).click()
@@ -263,7 +264,8 @@ describe('Group lt_by_js', () => {
         cy.get(text).should('have.text', 'Signed in successfully.')
         cy.get(userName).should('have.text', '\nredandwhite\n')
 
-        cy.get(seeDropDowmMenu).click()    
+        cy.get(seeDropDowmMenu).click()
+        cy.get(existDropDownMenu).should('exist').and('have.class', 'dropdown-menu dropdown-visible')    
         cy.get(dropDownMenu).should('have.length', 5).each(($el, i) =>{
             expect($el.text()).to.include(this.data.accountmenu[i])
         })  
