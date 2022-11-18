@@ -258,8 +258,8 @@ describe('Group lt_by_js', () => {
  
         cy.get(signinPage).click()
         cy.url().should('eq', 'https://home.openweathermap.org/users/sign_in')
-        cy.get(emailField).click().type(this.data.email)
-        cy.get(passowrField).click().type(this.data.password1)
+        cy.get(emailField).type(this.data.email)
+        cy.get(passowrField).type(this.data.password1)
         cy.get(buttonSubmit).click()
         cy.get(text).should('have.text', 'Signed in successfully.')
         cy.get(userName).should('have.text', '\nredandwhite\n')
