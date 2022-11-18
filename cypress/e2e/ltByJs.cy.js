@@ -273,7 +273,7 @@ describe('Group lt_by_js', () => {
         cy.get(text).should('have.text', 'You need to sign in or sign up before continuing.')
     })
 
-    it('AT_021.001 | Footer > Widgets>Invalid API',function () {
+    it('AT_021.001 | Footer > Widgets > Invalid API', function () {
         let widgetsPage = 'a[href="/widgets-constructor"]'
         let apiField = '#api-key'
         let cityField = '#search-city'
