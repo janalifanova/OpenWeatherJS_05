@@ -273,6 +273,18 @@ describe('Group lt_by_js', () => {
         cy.get(text).should('have.text', 'You need to sign in or sign up before continuing.')
     })
 
+    it('AT_021.001 | Footer > Widgets>Invalid API',function ()  {
+        let widgetsPage = 'a[href="/widgets-constructor"]'
+        let aryField = '#api-key'
+        let cityField = '#search-city'
+        let errorMessage = '#error-key'
+
+        cy.get(widgetsPage).click()
+        cy.get(aryField).type(this.data.invalidApi)
+        cy.get(cityField).click()
+        cy.get(errorMessage).should('have.text', 'Validation error')
+    })
+    
     it('AT_025.010 | Main menu > Dashboard > Verify the first button "Contact us" is clickable and redirects User to the Questions page', function () {
         cy.get('#desktop-menu a[href="/weather-dashboard"]').click()
 
@@ -280,5 +292,5 @@ describe('Group lt_by_js', () => {
 
         cy.url().should('include', '/questions')
         cy.get('.headline').should('have.text', 'Ask a question')
-    })
+    }) 
 })
