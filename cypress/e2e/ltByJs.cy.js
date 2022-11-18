@@ -275,13 +275,13 @@ describe('Group lt_by_js', () => {
 
     it('AT_021.001 | Footer > Widgets>Invalid API',function () {
         let widgetsPage = 'a[href="/widgets-constructor"]'
-        let aryField = '#api-key'
+        let apiField = '#api-key'
         let cityField = '#search-city'
         let errorMessage = '#error-key'
 
         cy.get(widgetsPage).click()
 
-        cy.get(aryField).type(this.data.invalidApi)
+        cy.get(apiField).type(this.data.invalidApi)
         cy.get(cityField).click()
         
         cy.get(errorMessage).should('have.text', 'Validation error')
