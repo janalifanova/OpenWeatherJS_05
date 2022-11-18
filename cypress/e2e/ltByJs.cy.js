@@ -243,4 +243,33 @@ describe('Group lt_by_js', () => {
         cy.get(userName).click()
         cy.get(logout).click()         
     })
+
+    it('AT_020.002 | Sign in>Dropdown menu>Verify dropdown menu is visible and exist', function () {  
+        let signinPage = '#desktop-menu a[href="https://openweathermap.org/home/sign_in"]'
+        let emailField = '.input-group #user_email'
+        let passowrField = '#user_password'
+        let buttonSubmit = '#new_user :nth-child(7)'
+        let text = '.panel-body'
+        let userName = '.inner-user-container'
+        let logout = '.dropdown-menu .logout'
+        let seeDropDowmMenu = '#user-dropdown'
+        let existDropDownMenu = '#user-dropdown-menu'
+        let dropDownMenu = '#user-dropdown-menu li'
+ 
+        cy.get(signinPage).click()
+        cy.url().should('eq', 'https://home.openweathermap.org/users/sign_in')
+        cy.get(emailField).type(this.data.email)
+        cy.get(passowrField).type(this.data.password1)
+        cy.get(buttonSubmit).click()
+        cy.get(text).should('have.text', 'Signed in successfully.')
+        cy.get(userName).should('have.text', '\nredandwhite\n')
+
+        cy.get(seeDropDowmMenu).click()
+        cy.get(existDropDownMenu).should('exist').and('have.class', 'dropdown-menu dropdown-visible')    
+        cy.get(dropDownMenu).should('have.length', 5).each(($el, i) =>{
+            expect($el.text()).to.include(this.data.accountmenu[i])
+        })  
+        cy.get(logout).click()
+        cy.get(text).should('have.text', 'You need to sign in or sign up before continuing.')
+    })
 })
