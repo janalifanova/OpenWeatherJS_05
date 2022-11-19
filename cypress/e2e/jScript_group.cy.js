@@ -440,4 +440,11 @@ describe('Group jScript_group', () => {
         cy.url().should('eq', 'https://home.openweathermap.org/api_keys');
         cy.get('.alert-info').should('have.text', '\nYou can generate as many API keys as needed for your subscription. We accumulate the total load from all of them.\n');
     });
+    
+    it('AT_021.003 | Footer > Widgets > Verify there are 9 widgets on the page', function () {
+        cy.get('[href="/widgets-constructor"]').click();
+        
+        cy.get('[id*="container-openweathermap-widget"]').should('have.length', 9)
+          .and('be.visible');
+    });    
 });
