@@ -5,7 +5,8 @@ describe('group noGroup', () => {
 
 const userName = 'nadiakoluzaeva@gmail.com';
 const password = 'OpenWeatherJS_05';
-  
+const wrongPassword = 'TestTest';
+
 beforeEach(function() {
   cy.fixture('noGroup').then(data => {
       this.data = data
@@ -87,4 +88,14 @@ it('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home 
   cy.wrap($el).should('have.css', 'color', 'rgb(233, 110, 80)')
     })
   })
-})
+
+  it('AT_006.005 | Sign in > Sign in to Your Account > Verify that after the user fills in the wrong password the alert pop-up appears', function() {
+ 
+    cy.get('#desktop-menu a[href="https://openweathermap.org/home/sign_in"]').click()
+    cy.get('#user_email').type(userName).should('have.value', userName)
+    cy.get('#user_password').type(wrongPassword).should('have.value', wrongPassword)
+    cy.get('#new_user input[value="Submit"]').click()
+    cy.get('.panel.panel-red .panel-body').should('have.text', 'Invalid Email or password.')
+    })
+  })
+
