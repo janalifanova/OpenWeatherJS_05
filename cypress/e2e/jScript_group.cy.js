@@ -388,6 +388,14 @@ describe('Group jScript_group', () => {
         cy.get('.scale-details > :first-child').should('contain.text', this.data.mapsPagePressureLabel);
     });
 
+    it('AT_010.002 | Marketplace > Verify the link "History Bulk” on the page', () => {
+        cy.get('#desktop-menu [href$="marketplace"]').invoke('removeAttr', 'target').click();
+        cy.get('.product-container a[href="/history_bulks/new"]:not(.button-round)').click();
+        
+        cy.url().should('include', '/history_bulks/new');
+        cy.get('.page-content-bulk h4.heading').should('have.text', 'Create New History Bulk')
+    });
+
     it('AC_010.011 |  Marketplace > Verify that all links on the page have the same color', function () {
         cy.get('#desktop-menu [href*="marketplace"]').invoke('removeAttr', 'target').click();
 
