@@ -1,5 +1,10 @@
 /// <reference types="cypress" />
 
+const mainMenuDesk = {
+  "marketplace": "#desktop-menu a[href*='/marketplace']",
+  "maps": "#desktop-menu a[href*='/weathermap']"
+  }
+
 describe('group Ark', () => {
 
   beforeEach(function () {
@@ -16,8 +21,8 @@ describe('group Ark', () => {
   });
 
   it('AT_010.004 | Marketplace > Verify the color of all orange links', function () {
-    cy.get('#desktop-menu [href*=marketplace]').invoke('removeAttr', 'target').click()
-
+    cy.get(mainMenuDesk.marketplace).invoke('removeAttr', 'target').click()
+  
     cy.get('.market-place .product h5 a')
       .each(el => {
         cy.wrap(el).should('have.css', 'color', 'rgb(235, 110, 75)')
@@ -191,7 +196,7 @@ describe('group Ark', () => {
   });
 
   it('AT_026.001 | Maps > Check that Global Precipitation is visualized on the map', function () {
-    cy.get('#desktop-menu a[href="/weathermap"]').click({ timeout: 10000 })
+    cy.get(mainMenuDesk.maps).click();
     cy.get('#map-wrap .global-map').should('be.visible')
 
     cy.get('label[for="Global Precipitation"]')
@@ -242,7 +247,19 @@ describe('group Ark', () => {
     cy.get("#stick-footer-panel .stick-footer-panel__link").each(el => {
         cy.wrap(el).focus().should('have.css', 'background-color', 'rgb(233, 110, 80)')
       });
-  });
+  })
+
+  it("AT_026.003 | Maps > Сheck that the «Zoom in» button works", function () {
+    cy.get(mainMenuDesk.maps).click();
+        
+    cy.get('a.leaflet-control-zoom-in').click()
+    cy.wait(3500)
+    
+    cy.get('img[src*="//cartodb-basemaps-c.global.ssl.fastly.net/light_all/"]')
+      .first()
+      .should("have.attr", "src")
+      .and('match', /light_all\//)
+  })
 
 
   it('AT_010.010 | Marketplace > Verify the link "Historical Data Archives"', () => {
