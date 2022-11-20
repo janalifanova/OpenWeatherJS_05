@@ -165,5 +165,4 @@ it('AT_010.010 | Marketplace > Verify the link "Historical Data Archives"', () =
   cy.get('h4.heading').should('have.text', 'Historical Weather Data by State')
 });
 
-
 })
