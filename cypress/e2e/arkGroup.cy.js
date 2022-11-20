@@ -246,9 +246,9 @@ describe('group Ark', () => {
 
 
   it('AT_010.010 | Marketplace > Verify the link "Historical Data Archives"', () => {
-    cy.visit('https://openweathermap.org/')
     cy.get('#desktop-menu [href*="marketplace"]').invoke('removeAttr', 'target').click()
     cy.get('#custom_weather_products h1').should('have.text', "Custom Weather Products")
+    
     cy.get('.category [href*="/zip_code_data/new"]').contains('Historical Weather Data by State for all ZIP codes, USA').click()
     cy.get('h4.heading').should('have.text', 'Historical Weather Data by State')
   });
