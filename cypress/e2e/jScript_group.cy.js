@@ -464,8 +464,8 @@ describe('Group jScript_group', () => {
         cy.get('@Support_Dropdown').each(($el, idx) => {
             expect($el.text()).to.be.equal(this.data.supportDropdown[idx]);
         });
-    });    
-
+    });
+ 
     it('AC_021.004 | Footer > Widgets > The widget code is visible', function () {
         cy.get('#desktop-menu li:nth-child(11) a').click();
         cy.get('.sign-form > form').within(($form) => {
@@ -487,5 +487,16 @@ describe('Group jScript_group', () => {
         cy.get('#popup-title').should('not.have.text', 'Important! You need to');
 
         cy.get('#popup-title').should('have.text', 'Get a code for posting a weather forecast widget on your site.');
-    })
+    });
+
+    it('AT_014.003 | Support > Ask a question>Verify if the "Ask the question" page opens', () => {
+        cy.get('#support-dropdown').contains('Support').click();
+        cy.get('#support-dropdown-menu a[href$="/questions"]')
+        .contains('Ask a question')
+        .invoke('removeAttr', 'target')
+        .click();
+
+        cy.url().should('include', '/questions')
+        cy.title().should('eq', 'Members');
+    });  
 });
