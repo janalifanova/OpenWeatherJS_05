@@ -322,7 +322,6 @@ describe('Group lt_by_js', () => {
     cy.get(".table.table-striped th").eq(0).should('contain', 'Number')
   });
 
-
   it('AT_007.002 |Create an account> Check message error', function () {
     const signInPage = '#desktop-menu a[href="https://openweathermap.org/home/sign_in"]'
     const signInToYourAccountext = '.first-child'
