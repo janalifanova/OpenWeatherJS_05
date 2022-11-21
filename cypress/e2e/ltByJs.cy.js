@@ -321,4 +321,31 @@ describe('Group lt_by_js', () => {
     }); 
     cy.get(".table.table-striped th").eq(0).should('contain', 'Number')
   });
+
+  it('AT_007.002 |Create an account> Check message error', function () {
+    const signInPage = '#desktop-menu a[href="https://openweathermap.org/home/sign_in"]'
+    const signInToYourAccountext = '.first-child'
+    const createAccount = 'a[href="/users/sign_up"]'
+    const userNameField = '#user_username'
+    const emailField = '#user_email'
+    const passwordField = '#user_password'
+    const repeatPassword = '#user_password_confirmation'
+    const ageControl = '.chk-age-confirm'
+    const agreement = '.chk-accept'
+    const buttonCreatAccount = '.btn-submit'
+    const capchaMessage = '.help-block'
+
+    cy.get(signInPage).click()
+    cy.get(signInToYourAccountext).should('have.text', 'Sign In To Your Account')
+    cy.get(createAccount).click()
+    cy.get(userNameField).type(this.data.userName)
+    cy.get(emailField).type(this.data.email)
+    cy.get(passwordField).type(this.data.password1)
+    cy.get(repeatPassword).type(this.data.password1)
+    cy.get(ageControl).click()
+    cy.get(agreement).click()
+    cy.get(buttonCreatAccount).click() 
+
+    cy.get(capchaMessage).should('be.visible').and('have.text', 'reCAPTCHA verification failed, please try again.')
+  })
 })
