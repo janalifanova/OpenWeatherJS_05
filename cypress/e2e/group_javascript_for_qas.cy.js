@@ -62,5 +62,14 @@ describe('group_javascript_for_qas', () => {
         cy.url().should("contain", "/subscriptions");
         cy.get("h3.subscribe-title a").should("contain", "One Call by Call");
     });
+    
+    it('AT_005.004 | Verify the website’s name and description is correct and visible', function () {
+        cy.get('h1 .orange-text').should('be.visible').each(($el, idx) => {
+            expect($el.text()).to.contain(this.data.title)
+        })
+        cy.get('h2 .white-text').should('be.visible').each(($el, idx) => {
+            expect($el.text()).to.contain(this.data.description)
+        })
+    })   
 
 });
