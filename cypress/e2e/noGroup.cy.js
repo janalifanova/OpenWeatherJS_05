@@ -97,5 +97,23 @@ it('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home 
     cy.get('#new_user input[value="Submit"]').click()
     cy.get('.panel.panel-red .panel-body').should('have.text', 'Invalid Email or password.')
     })
+
+  it('AT_001.012 | Main page > Section with search > Search City> The displayed city name equals the city selected in "Search city" field', function() {
+      const cityForSearch = "Paris";
+      const cityForSelectList = "Paris, FR";
+
+      cy.get('.search input').type(cityForSearch)
+      cy.get('.search button').click()
+      cy.get('ul.search-dropdown-menu li').each(($el) => {
+          if(cy.wrap($el).contains(cityForSelectList)){
+              cy.wrap($el).click()
+          } 
+          return false;
+      })
+
+      cy.get('div.current-container')
+      .contains(cityForSelectList)
+      .should('be.visible')
+  });
   })
 
