@@ -47,9 +47,10 @@ describe('Group jScript_group', () => {
     }); 
     
     it('AT_012.002 | Partners > CMS > Verify "See on the website" button', function () {
-        cy.get('div#desktop-menu a[href*="examples"]').click();
+        cy.get('div#desktop-menu a[href*="examples"]').as('Partners').click();
 
         cy.get('a[href="http://drupal.org/project/olowm"]')
+          .as('SeeOnTheWebsite_Button')
           .invoke('removeAttr', 'target')
           .click();
 
