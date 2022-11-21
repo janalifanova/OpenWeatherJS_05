@@ -348,4 +348,27 @@ describe('Group lt_by_js', () => {
 
     cy.get(capchaMessage).should('be.visible').and('have.text', 'reCAPTCHA verification failed, please try again.')
   })
+
+  it('AT_004.004 | Main page > Section with search > Switching weather to Metric system', function () {
+    const imperial = '.switch-container :nth-child(3)'
+    const metric = '.switch-container :nth-child(2)'
+    const highlighting = '#selected'
+    const weather = '.current-temp span[data-v-3e6e9f12]'
+    const temp = '.heading'
+
+    cy.get(imperial).click()
+    cy.wait(4000)
+    cy.get(highlighting).should('have.attr', 'style', "left: 72pt;")  
+
+    cy.get(temp).then(($data) => {
+        let tempF = parseInt($data.text())
+    cy.get(metric).click().wait(4000).then(() =>{
+        let tempC = parseInt($data.text())
+        expect(tempC).to.eq(Math.round(5 / 9 * (tempF - 32)))                   
+        })
+    })
+
+    cy.get(weather).should('contain', '°C')
+    cy.get(highlighting).should('have.attr', 'style', "left: 2pt;")   
+  })
 })
