@@ -114,6 +114,22 @@ it('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home 
       cy.get('div.current-container')
       .contains(cityForSelectList)
       .should('be.visible')
-  });
   })
+  
+  it('AT_048.004 | User page > Billing plans > Verify that after the user clicks on the link "One Call by Call" subscription plan" open a new page url', function() {
+ 
+  cy.get('#desktop-menu a[href="https://openweathermap.org/home/sign_in"]').click()
+  cy.get('#user_email').type(userName).should('have.value', userName)
+  cy.get('#user_password').type(password).should('have.value', password)
+  cy.get('#new_user input[value="Submit"]').click()
+    .url().should('include', 'home.openweathermap.org')
+  cy.get('[href="/subscriptions"]').click()
+  cy.get('h3.subscribe-title > a')
+    .as('linkOneCallByCall')
+    .should('be.visible')
+    .click()
+    .url().should('eq', 'https://openweathermap.org/price')
+  cy.get('h1.breadcrumb-title').should('have.text', 'Pricing')
+  })
+})
 
