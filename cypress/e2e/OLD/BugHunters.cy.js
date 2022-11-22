@@ -294,6 +294,17 @@ describe('groupBugHunters', () => {
     cy.get('#user-dropdown-menu').each(($el, index) => {
       expect($el.text()).to.include(this.data.userAccountMenu[index])
     })
+
+  it('AT_028.008 | Footer > About us > Verify the button "Buy by Subscriptions"', function() {
+    let aboutUs = ' a[href="/about-us"]'
+    let buyBySubscriptions = 'a[href="https://home.openweathermap.org/subscriptions"]'
+
+    cy.get(aboutUs).click()
+    cy.get(buyBySubscriptions).click()
+
+    cy.url().should(include, '/users/sign_in')  
+  });
+
   })
 
 })
