@@ -358,7 +358,7 @@ it('AT_033.018 | Header > Navigation > API', () => {
   cy.url().should('include', '/api')
 });
 
-it('AT_007.004 | Main page> Create an account', () => {
+it('AT_007.004 | Main page> Create an  account', () => {
   cy.get('.user-li a[href="https://openweathermap.org/home/sign_in"]').click({
     force: true
   })
