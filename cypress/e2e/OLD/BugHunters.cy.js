@@ -306,19 +306,17 @@ describe('groupBugHunters', () => {
   })
 
   it('AT_021.005 | Footer > Widgets> Verify redirect to Widgets constructor page', function() {
-    cy.get('.user-li').as('SignInButton').click()
-    cy.get('.new_user .email').as('EnterEmailField').type('push@mailto.plus')
-    cy.get('#user_password').as('PasswordField').type('123456789')
-    cy.get('.btn-color[value="Submit"]').as('SummitButton').click()
+    cy.get('.user-li').click()
+    cy.get('.new_user .email').type('push@mailto.plus')
+    cy.get('#user_password').type('123456789')
+    cy.get('.btn-color[value="Submit"]').click()
 
-    cy.get('.inner-footer-container li:nth-child(5) a')
-      .as('WidgetsButton')
+    cy.get('.inner-footer-container a[href*=widgets]')
       .should('include.text', 'Widgets')
       .click()
 
     cy.url().should('include', '/widgets-constructor')
     cy.get('.breadcrumb-title')
-      .as('TitleOnPage')
       .should('have.text', 'Widgets constructor')
   })
 
