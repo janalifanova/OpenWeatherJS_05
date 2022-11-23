@@ -15,6 +15,9 @@ describe('groupBugHunters', () => {
     cy.get('li.user-li').contains('Sign in').click({
       force: true
     })
+    cy.get('li.user-li').contains('Sign in').click({
+      force: true
+    })
     cy.get('#user_email')
       .should('have.attr', 'placeholder', 'Enter email')
       .type('oforostinko@gmail.com')
@@ -326,13 +329,15 @@ describe('groupBugHunters', () => {
     cy.get('.city-data > .city-main-info > .city-name').wait(3000).contains('Amsterdam').click();
     cy.get('.expanded > :nth-child(1) > .city-data > .city-full-info > table > tbody').each(($el, i) => {
       expect($el.text()).to.include(this.data.cityData[i]);
+
     })
   })
-
+  
   it('AT_041.003 | Header > User > My API keys >', () => {
     cy.get('li.user-li').contains('Sign in').click({
       force: true
     })
+
     cy.get('#user_email')
       .type('redroverschool@yahoo.com')
     cy.get('#user_password.form-control')
@@ -358,27 +363,41 @@ it('AT_033.018 | Header > Navigation > API', () => {
   cy.url().should('include', '/api')
 });
 
-it('AT_007.004 | Main page> Create an account', () => {
-  cy.get('.user-li a[href="https://openweathermap.org/home/sign_in"]').click({
-    force: true
+  it('AT_021.005 | Footer > Widgets> Verify redirect to Widgets constructor page', function() {
+    cy.get('.user-li a[href*=sign_in]').click()
+    cy.get('.input-group #user_email').type('push@mailto.plus')
+    cy.get('#user_password').type('123456789')
+    cy.get('.btn-color[value="Submit"]').click()
+
+    cy.get('.inner-footer-container a[href*=widgets]')
+      .should('include.text', 'Widgets')
+      .click()
+
+    cy.url().should('include', '/widgets-constructor')
+    cy.get('.breadcrumb-title')
+      .should('have.text', 'Widgets constructor')
   })
-  cy.get('a[href="/users/sign_up"]').click()
-  cy.url().should('include', '/users/sign_up')
-  cy.get('#user_username')
-    .should('have.attr', 'placeholder', 'Username').click()
-    .type('Wies')
-  cy.get('#user_email')
-    .should('have.attr', 'placeholder', 'Enter email').click()
-    .type('wiesvictoriaqa@gmail.com')
-  cy.get('#user_password')
-    .should('have.attr', 'placeholder', 'Password').click()
-    .type('12345678wies')
-  cy.get('#user_password_confirmation')
-    .should('have.attr', 'placeholder', 'Repeat Password').click()
-    .type('12345678wies')
-  cy.get('#agreement_is_age_confirmed').check().should('be.checked')
-  cy.get('#agreement_is_accepted').check().should('be.checked')
-  cy.get('.btn').click()
-  
-});
+
+  it('AT_007.004 | Main page> Create an account', () => {
+    cy.get('.user-li a[href="https://openweathermap.org/home/sign_in"]').click({
+      force: true
+    })
+    cy.get('a[href="/users/sign_up"]').click()
+    cy.url().should('include', '/users/sign_up')
+    cy.get('#user_username')
+      .should('have.attr', 'placeholder', 'Username').click()
+      .type('Wies')
+    cy.get('#user_email')
+      .should('have.attr', 'placeholder', 'Enter email').click()
+      .type('wiesvictoriaqa@gmail.com')
+    cy.get('#user_password')
+      .should('have.attr', 'placeholder', 'Password').click()
+      .type('12345678wies')
+    cy.get('#user_password_confirmation')
+      .should('have.attr', 'placeholder', 'Repeat Password').click()
+      .type('12345678wies')
+    cy.get('#agreement_is_age_confirmed').check().should('be.checked')
+    cy.get('#agreement_is_accepted').check().should('be.checked')
+    cy.get('.btn').click()
+  });
 })
