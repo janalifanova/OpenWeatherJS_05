@@ -359,7 +359,6 @@ it('AT_033.018 | Header > Navigation > API', () => {
 });
 
 it('AT_007.004 | Main page> Create an account', () => {
-  cy.visit('https://openweathermap.org')
   cy.get('.user-li a[href="https://openweathermap.org/home/sign_in"]').click({
     force: true
   })
