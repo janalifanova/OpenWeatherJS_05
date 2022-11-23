@@ -15,7 +15,7 @@ beforeEach(function() {
   cy.fixture('noGroup').then(data => {
       this.data = data
     });
-    cy.visit('https://openweathermap.org/')
+    cy.visit('/')
 })
 
 it('AT_010.006 | Marketplace > Verify all orange links on the page', () => {
@@ -120,7 +120,7 @@ it('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home 
     .as('linkOneCallByCall')
     .should('be.visible')
     .click()
-    .url().should('eq', 'https://openweathermap.org/price')
+    .url().should('include', '/price')
   cy.get('h1.breadcrumb-title').should('have.text', 'Pricing')
   })
 })
