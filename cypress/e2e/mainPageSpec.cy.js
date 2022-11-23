@@ -26,7 +26,7 @@ describe('mainPageSpec', () => {
         mainPage.elements.getPageDescriptionWhiteText().should('have.text', this.data.pageDescriptionWhiteText);
     });
 
-    it.only('AT_051.002 | API > Testing Home button > Verify that after clicking on the Home link on the API page the user gets redirected to the Home page of the site.', function () {
+    it('AT_051.002 | API > Testing Home button > Verify that after clicking on the Home link on the API page the user gets redirected to the Home page of the site.', function () {
         mainPage.clickApiLink()
         mainPage.elements
                 .getHomePageButton()
