@@ -15,7 +15,7 @@ describe('Marketplace page test suite', () => {
             cy.visit('/');
       });
       
-      it.only('AT_033.004 | Header > Navigation > Verify "Marketplace" menu link', function () {
+      it('AT_033.004 | Header > Navigation > Verify "Marketplace" menu link', function () {
             header.clickMarketplaceMenuLink()
       
             cy.url().should('be.equal', this.data.url)
