@@ -297,7 +297,7 @@ describe('groupBugHunters', () => {
   })
 
   it('AT_021.005 | Footer > Widgets> Verify redirect to Widgets constructor page', function() {
-    cy.get('.user-li').click()
+    cy.get('.user-li a[href*=sign_in]').click()
     cy.get('.new_user .email').type('push@mailto.plus')
     cy.get('#user_password').type('123456789')
     cy.get('.btn-color[value="Submit"]').click()
