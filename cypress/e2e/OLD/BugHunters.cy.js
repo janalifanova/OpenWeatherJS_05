@@ -349,6 +349,7 @@ describe('groupBugHunters', () => {
     cy.get('.city-data > .city-main-info > .city-name').wait(3000).contains('Amsterdam').click();
     cy.get('.expanded > :nth-child(1) > .city-data > .city-full-info > table > tbody').each(($el, i) => {
       expect($el.text()).to.include(this.data.cityData[i]);
+
     })
   })
   
@@ -356,6 +357,7 @@ describe('groupBugHunters', () => {
     cy.get('li.user-li').contains('Sign in').click({
       force: true
     })
+
     cy.get('#user_email')
       .type('redroverschool@yahoo.com')
     cy.get('#user_password.form-control')
@@ -372,5 +374,28 @@ describe('groupBugHunters', () => {
       })
     cy.get('.alert').contains('You can generate as many API keys as needed for your subscription.').should('be.visible')
   });
+
+it('AT_033.018 | Header > Navigation > API', () => {
+  cy.visit('https://openweathermap.org')
+  cy.get('#desktop-menu a[href="/api"]').click({
+    force: true
+  })
+  cy.url().should('include', '/api')
+});
+
+  it('AT_021.005 | Footer > Widgets> Verify redirect to Widgets constructor page', function() {
+    cy.get('.user-li a[href*=sign_in]').click()
+    cy.get('.input-group #user_email').type('push@mailto.plus')
+    cy.get('#user_password').type('123456789')
+    cy.get('.btn-color[value="Submit"]').click()
+
+    cy.get('.inner-footer-container a[href*=widgets]')
+      .should('include.text', 'Widgets')
+      .click()
+
+    cy.url().should('include', '/widgets-constructor')
+    cy.get('.breadcrumb-title')
+      .should('have.text', 'Widgets constructor')
+  })
 
 })
