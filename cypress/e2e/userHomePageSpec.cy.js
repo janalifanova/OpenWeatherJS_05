@@ -21,7 +21,7 @@ describe('User Home Page suite', () => {
         
     userHomePage.elements.getNavBarBlocks()
         .each(($el, idx) => {
-            cy.wrap($el).should('have.css', 'color', 'rgb(233, 110, 80)')
+            cy.wrap($el).should('have.css', 'color', this.data.color)
               })
 
     })
