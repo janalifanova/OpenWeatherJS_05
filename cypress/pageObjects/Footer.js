@@ -8,7 +8,11 @@ class Footer {
     };
 
         clickOnTermsAndConditionsOfSaleLink() {
-            this.elements.getTermsAndConditionsOfSaleLink().invoke('removeAttr', 'target').click({force: true});
+            this.elements.getTermsAndConditionsOfSaleLink().invoke('removeAttr', 'target').click({force: true})
+    };   
+     
+        clickAppStoreLink() {
+        this.elements.getAppStoreLink().invoke('removeAttr', 'target').click({force: true})
     };
     
         clickWebsiteTermsAndConditionsLink() {

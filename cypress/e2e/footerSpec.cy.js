@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
  
 import Footer from "../pageObjects/Footer.js"
- 
+
 const footer = new Footer();
  
 describe('Footer test suite', () => {
@@ -28,5 +28,10 @@ describe('Footer test suite', () => {
         footer.clickOnTermsAndConditionsOfSaleLink();
         
         cy.url().should('eq',this.data.termsAndConditionsOfSaleUrl);
+    });
+
+    it("AT_029.002 | Footer >Download OpenWeather App> Download on the App Store' button link", function() {
+        footer.clickAppStoreLink()
+        cy.url().should('eq', this.data.DownloadAppURL.AppStoreURL);        
     });
 });
