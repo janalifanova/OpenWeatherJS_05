@@ -43,9 +43,5 @@ class SignInPage {
     this.elements.getBtnSendEmailResetPassword().click({force: true})
   }
 
-  typeEnterWrongPassword(wrongPassword) {
-    this.elements.getPasswordInput().type(wrongPassword)
-  };
-
 };
 export default SignInPage;

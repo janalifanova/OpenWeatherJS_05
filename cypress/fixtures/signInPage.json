@@ -8,7 +8,13 @@
   "urlUsersPassword": "https://home.openweathermap.org/users/password",
   "textForgotYourPassword": "Forgot your password?",
 
-  "wrongPassword": "TestTest",
+  "userProfile": {
+        
+    "userName": "noGroup",
+    "email": "test.openweathermap.05@gmail.com",
+    "password": "Test@123",
+    "wrongPassword": "TestTest"
+    },
 
   "allerInvalidEmail": "Invalid Email or password."
     
