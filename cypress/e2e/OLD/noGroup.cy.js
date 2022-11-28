@@ -36,7 +36,7 @@ it('AT_010.006 | Marketplace > Verify all orange links on the page', () => {
     })
 });
 
-  it('AT_051.002 | API > Testing Home button > Verify that after clicking on the Home link on the API page the user gets redirected to the Home page of the site.', function () {
+  it.skip('AT_051.002 | API > Testing Home button > Verify that after clicking on the Home link on the API page the user gets redirected to the Home page of the site.', function () {
     cy.get('#desktop-menu a[href="/api"]').click()
     cy.url().should('contain', '/api')
     cy.get('.breadcrumb a[href="/"]').should('have.text', 'Home').click()
@@ -44,7 +44,7 @@ it('AT_010.006 | Marketplace > Verify all orange links on the page', () => {
     cy.contains('OpenWeather')
   })
 
-  it('AT_043.002 | NavBar > User > My profile > Verify that NavBar has 9 options', function() {
+  it.skip('AT_043.002 | NavBar > User > My profile > Verify that NavBar has 9 options', function() {
  
     cy.login(this.data.userProfile.email, this.data.userProfile.password)
 
@@ -54,7 +54,7 @@ it('AT_010.006 | Marketplace > Verify all orange links on the page', () => {
     })
   })
   
-  it('AT_047.001 | User page > New Products > Check that an unauthorized user gets to the New Products...', function() {
+  it.skip('AT_047.001 | User page > New Products > Check that an unauthorized user gets to the New Products...', function() {
 
     cy.login(this.data.userProfile.email, this.data.userProfile.password)
 
@@ -62,7 +62,7 @@ it('AT_010.006 | Marketplace > Verify all orange links on the page', () => {
     cy.get('.active').should('contain.text', 'New Products')
   })
 
-  it('AT_043.004 | NavBar > User > Verify that tab "New Products" has 3 text-block', function() {
+  it.skip('AT_043.004 | NavBar > User > Verify that tab "New Products" has 3 text-block', function() {
  
     cy.login(this.data.userProfile.email, this.data.userProfile.password)
 
@@ -73,7 +73,7 @@ it('AT_010.006 | Marketplace > Verify all orange links on the page', () => {
     })
 })
 
-it('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home page have the same color', function() {
+it.skip('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home page have the same color', function() {
  
   cy.login(this.data.userProfile.email, this.data.userProfile.password)
 
@@ -111,7 +111,7 @@ it('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home 
       .should('be.visible')
   })
   
-  it('AT_048.004 | User page > Billing plans > Verify that after the user clicks on the link "One Call by Call" subscription plan" open a new page url', function() {
+  it.skip('AT_048.004 | User page > Billing plans > Verify that after the user clicks on the link "One Call by Call" subscription plan" open a new page url', function() {
  
   cy.login(this.data.userProfile.email, this.data.userProfile.password)
     
@@ -123,5 +123,17 @@ it('AT_043.005 | NavBar > User > Verify that title of 3 text blocks on the home 
     .url().should('include', '/price')
   cy.get('h1.breadcrumb-title').should('have.text', 'Pricing')
   })
+
+  it.skip('AT_028.009 | Footer > About us > Verify the button "Buy in the Marketplace" redirects to the expected page', function () {
+    const aboutAs = 'a[href="/about-us"]'
+    const btnBuyMarketplace = 'div.grid-container a[href$="/marketplace"]'
+    const pageTitle = '#custom_weather_products'
+
+    cy.get(aboutAs).click()
+    cy.get(btnBuyMarketplace).click()
+
+    cy.get(pageTitle).should('include.text', 'Custom Weather Products')
+      .and('be.visible')
+  });
 })
 

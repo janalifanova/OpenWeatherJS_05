@@ -1,4 +1,13 @@
 {
-    "zipCode": "60604",
-    "pageDescriptionWhiteText": "Weather forecasts, nowcasts and history in a fast and elegant way"
+    "searchInputText": {
+        "zipCode": "60604",
+        "cityName": "Washington"
+    },
+    "pageDescriptionWhiteText": "Weather forecasts, nowcasts and history in a fast and elegant way",
+    "forecastDaysLength": 8, 
+    "mainText": "OpenWeather",
+    "searchInputText1": {
+        "city": "Cambridge",
+        "searchResult": "Cambridge, GB"
+    }
 }

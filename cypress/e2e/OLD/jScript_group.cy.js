@@ -15,7 +15,7 @@ describe('Group jScript_group', () => {
         cy.get('#blog-categories [for="weather"] a').should('have.text', this.data.blogPageWeatherFilter);
     });
 
-    it('AT_002.001 | Header > After clicking the logo user is redirected to the home page', function () {
+    it.skip('AT_002.001 | Header > After clicking the logo user is redirected to the home page', function () {
         cy.visit(this.data.examplesPageLink);
 
         cy.get('.logo').click();
@@ -46,7 +46,7 @@ describe('Group jScript_group', () => {
         cy.url().should('eq', 'https://openweather.co.uk/storage/app/media/Terms/Openweather_terms_and_conditions_of_sale.pdf');
     }); 
     
-    it('AT_012.002 | Partners > CMS > Verify "See on the website" button', function () {
+    it.skip('AT_012.002 | Partners > CMS > Verify "See on the website" button', function () {
         cy.get('div#desktop-menu a[href*="examples"]').as('Partners').click({force: true});
 
         cy.get('a[href="http://drupal.org/project/olowm"]')
@@ -63,7 +63,7 @@ describe('Group jScript_group', () => {
         cy.url().should('include', 'https://openweathermap.org/');
     });
 
-    it('AT_031.001 | Sign in > Account Dropdown Menu > After cliking the "logout" button the message appears', function () {
+    it.skip('AT_031.001 | Sign in > Account Dropdown Menu > After cliking the "logout" button the message appears', function () {
         cy.get('li[class="user-li"] a[href$="sign_in"]').click({force: true});
         cy.get('#user_email').type('3065606@gmail.com');
         cy.get('#user_password.form-control').type('Qwerty1234');
@@ -106,7 +106,7 @@ describe('Group jScript_group', () => {
         cy.get('#desktop-menu a[href="/examples"]').click({force: true});
 
         cy.get('#cms a').each(($el, i) => {
-            expect($el.text()).to.equal(this.data.sectionsNames[i]);
+            expect($el.text()).to.equal(this.data.CMSNameButtons[i]);
         });
     });
 
@@ -127,7 +127,7 @@ describe('Group jScript_group', () => {
         cy.url().should('eq', 'https://wordpress.org/plugins/awesome-weather/');
     });
 
-    it('AT_050.002 | Footer > Verify that user can be redirected to the "Terms and conditions of sale" page', function () {
+    it.skip('AT_050.002 | Footer > Verify that user can be redirected to the "Terms and conditions of sale" page', function () {
         cy.get('[href*="conditions_of_sale"]').invoke('removeAttr', 'target').click({force: true});
         cy.url().should('eq', 'https://openweather.co.uk/storage/app/media/Terms/Openweather_terms_and_conditions_of_sale.pdf');
     });
@@ -139,7 +139,7 @@ describe('Group jScript_group', () => {
         cy.url().should('eq', 'https://wordpress.org/plugins/waypoint-hd-weather-widget/');
     });
 
-    it('AT_012.006 | Partners > CMS > Verify “View plugin” button for WordPress WPCloudy Plugin', function () {
+    it.skip('AT_012.006 | Partners > CMS > Verify “View plugin” button for WordPress WPCloudy Plugin', function () {
         cy.get('#desktop-menu a[href="/examples"]').click({force: true});
         cy.get('a[href="#cms"]').click();
         cy.get('a[href="https://wordpress.org/plugins/wp-cloudy/"]').invoke('removeAttr', 'target').click();
@@ -151,7 +151,7 @@ describe('Group jScript_group', () => {
         cy.url().should('eq', 'https://openweathermap.org/');
     });
     
-    it('AT_045.001 | Main page > Section with 8-day forecast>See the weather forecast for 8 days', function () {
+    it.skip('AT_045.001 | Main page > Section with 8-day forecast>See the weather forecast for 8 days', function () {
         cy.get('ul.day-list li').should('have.length', 8);
     });
 
@@ -201,7 +201,7 @@ describe('Group jScript_group', () => {
         cy.get('.post-page__img').should('be.visible');
     });
 
-    it('AT_028.006 | Footer > About us > Verify "Products Documentation" button redirects to the expected URL', function () {
+    it.skip('AT_028.006 | Footer > About us > Verify "Products Documentation" button redirects to the expected URL', function () {
         cy.get('div#footer-website a[href="/about-us"]').click({force: true});
         cy.get('div.grid-container [href="/api"]').click();
         cy.url().should('include', 'https://openweathermap.org/api');
@@ -299,7 +299,7 @@ describe('Group jScript_group', () => {
         cy.get('.sign-form').should('exist');
     });
 
-    it('AT_038.001 | For business page > Verify that user can be redirected to the business page', function () {
+    it.skip('AT_038.001 | For business page > Verify that user can be redirected to the business page', function () {
         cy.get('#desktop-menu a[href="https://openweather.co.uk"]').invoke('removeAttr','target').click({force: true});
 
         cy.url().should('eq', 'https://openweather.co.uk/');
@@ -363,7 +363,7 @@ describe('Group jScript_group', () => {
         cy.get('.post-list .post').should('have.length', 10);
     });
 
-    it('AT_038.002 | For business page > About us', function () {
+    it.skip('AT_038.002 | For business page > About us', function () {
         cy.get('#desktop-menu a[href="https://openweather.co.uk"]').invoke('removeAttr','target').click({force: true});
     
         cy.get('a.btn_block[href="#main_about"]').click({force: true});
@@ -381,7 +381,7 @@ describe('Group jScript_group', () => {
         cy.get('#main_products .section h2').should('include.text', 'OUR PRODUCTS')
     });
 
-    it('AT_027.004 | Maps > Section with the scale > The scale\'s name matches the label\'s name after selecting "Pressure"', function () {
+    it.skip('AT_027.004 | Maps > Section with the scale > The scale\'s name matches the label\'s name after selecting "Pressure"', function () {
         cy.get('#desktop-menu [href="/weathermap"]').click({force: true});
         cy.get('[for="Pressure"]').click();
 
@@ -410,7 +410,7 @@ describe('Group jScript_group', () => {
         cy.get('.page-content-bulk h4.heading').should('have.text', 'Create New History Bulk')
     });
 
-    it('AC_010.011 |  Marketplace > Verify that all links on the page have the same color', function () {
+    it.skip('AC_010.011 |  Marketplace > Verify that all links on the page have the same color', function () {
         cy.get('#desktop-menu [href*="marketplace"]').invoke('removeAttr', 'target').click({force: true});
 
         cy.get('.market-place a[href]:not(.button-round)').each(($el) => {
@@ -430,11 +430,11 @@ describe('Group jScript_group', () => {
         cy.get(email_field).type('Checking_that_the_page_is_not_empty.');
     });
 
-    it('AT_045.006 | Main page > Section with 8-day forecast > Verifying the weather forecast for 8 days is displayed in the section', function () {
+    it.skip('AT_045.006 | Main page > Section with 8-day forecast > Verifying the weather forecast for 8 days is displayed in the section', function () {
         cy.get('.day-list li').should('have.length', this.data.dayListLength);
     });
 
-    it('AT_045.007 | Main page > Section with 8-day forecast > Verifying the first displayed day in the section matches today\'s date', function () {
+    it.skip('AT_045.007 | Main page > Section with 8-day forecast > Verifying the first displayed day in the section matches today\'s date', function () {
         const date = new Date().toUTCString().split(' ');
         const correctDate = []; 
         correctDate.push(date[0], date[2], date[1]);
@@ -467,7 +467,7 @@ describe('Group jScript_group', () => {
         cy.get('.alert-info').should('have.text', '\nYou can generate as many API keys as needed for your subscription. We accumulate the total load from all of them.\n');
     });
     
-    it('AT_021.003 | Footer > Widgets > Verify there are 9 widgets on the page', function () {
+    it.skip('AT_021.003 | Footer > Widgets > Verify there are 9 widgets on the page', function () {
         cy.get('[href="/widgets-constructor"]').click({force: true});
         
         cy.get('[id*="container-openweathermap-widget"]').should('have.length', 9)
@@ -484,7 +484,7 @@ describe('Group jScript_group', () => {
         });
     });
  
-    it('AC_021.004 | Footer > Widgets > The widget code is visible', function () {
+    it.skip('AC_021.004 | Footer > Widgets > The widget code is visible', function () {
         cy.get('#desktop-menu li:nth-child(11) a').click({force: true});
         cy.get('.sign-form > form').within(($form) => {
             cy.get('#user_email').type(this.data.loginUserEmail);

@@ -7,7 +7,7 @@ describe('asiaJS', () => {
       this.data = data
     });
 
-    cy.visit('https://openweathermap.org/');
+    cy.visit('/');
   });
 
   it('AT_010.002 | Marketplace > Verify link “History Bulk” are clickable', () => {
@@ -37,7 +37,7 @@ describe('asiaJS', () => {
     cy.url().should('include', '/zip_code_data/new');
   });
 
-  it('AT_030.003 | Footer > Website terms and conditions > Verify redirecting to new url', () => {
+  it.skip('AT_030.003 | Footer > Website terms and conditions > Verify redirecting to new url', () => {
     cy.get('[href$="website_terms_and_conditions_of_use.pdf"]')
       .invoke('removeAttr', 'target')
       .click();
@@ -69,7 +69,7 @@ describe('asiaJS', () => {
       });
   });
 
-  it('AT_001.014 | Main page > Search section > Verify that entered city is displayed into the dropdown', () => {
+  it.skip('AT_001.014 | Main page > Search section > Verify that entered city is displayed into the dropdown', () => {
     cy.get('div.search-container').type('Cambridge');
     cy.get('button[type="submit"]').click();
     cy.get('ul span[style="width: 140px;"]')
@@ -77,7 +77,7 @@ describe('asiaJS', () => {
       .click();
   });
 
-  it('AT_008.003 | Main menu > Guide | Verifying the link on the page "Guide"', () => {
+  it.skip('AT_008.003 | Main menu > Guide | Verifying the link on the page "Guide"', () => {
     const buttonGuide = '#mobile-menu a[href="/guide"]';
     const titleGuide = 'h1.breadcrumb-title';
 
@@ -118,7 +118,7 @@ describe('asiaJS', () => {
     cy.get('.topic h1').should('have.text', 'Student initiative');
   });
 
-  it('AT_016.002 | Support > FAQ page > Verify the question "How to get an API key" is opened and visible by clicking on it', () => {
+  it.skip('AT_016.002 | Support > FAQ page > Verify the question "How to get an API key" is opened and visible by clicking on it', () => {
     const faqLink = '#support-dropdown-menu [href="/faq"]';
     const howToGet = '#how-to-get-an-API-key';
 
@@ -132,7 +132,7 @@ describe('asiaJS', () => {
       .should('be.visible');
   });
 
-  it('AT_042.005 | User page >My payments>Verify that text displays on the page', function () {
+  it.skip('AT_042.005 | User page >My payments>Verify that text displays on the page', function () {
     const buttonSignIn = '.user-li a';
     const userEmail = '.input-group input#user_email';
     const userPassword = '.input-group input#user_password';
