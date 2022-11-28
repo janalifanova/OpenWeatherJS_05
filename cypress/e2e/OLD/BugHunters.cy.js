@@ -15,9 +15,6 @@ describe('groupBugHunters', () => {
     cy.get('li.user-li').contains('Sign in').click({
       force: true
     })
-    cy.get('li.user-li').contains('Sign in').click({
-      force: true
-    })
     cy.get('#user_email')
       .should('have.attr', 'placeholder', 'Enter email')
       .type('oforostinko@gmail.com')
