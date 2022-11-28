@@ -215,7 +215,7 @@ describe('GroupReporters', () => {
       cy.get('div.topic h1').should('have.text', 'Frequently Asked Questions');
     });
     
-    it('AT_007.006 | Main page>Sign in> Create an account > "Lost your password? Click here to recover." checking.', () => {
+    it.skip('AT_007.006 | Main page>Sign in> Create an account > "Lost your password? Click here to recover." checking.', () => {
         const email = 'test@eail.cm'
 
         cy.get('#desktop-menu > ul > li.user-li > a').click()
@@ -266,7 +266,7 @@ describe('GroupReporters', () => {
         })
     })
 
-    it('TC_008.011 | Main menu > Guide > verify button "Home"', () => {
+    it.skip('TC_008.011 | Main menu > Guide > verify button "Home"', () => {
         cy.get('#desktop-menu > ul > li:nth-child(1) > a').click()
         cy.url().should('include', '/guide')
 

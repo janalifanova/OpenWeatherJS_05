@@ -20,7 +20,7 @@ describe('group Ark', () => {
     cy.url().should("eq", "https://openweathermap.org/guide");
   });
 
-  it('AT_010.004 | Marketplace > Verify the color of all orange links', function () {
+  it.skip('AT_010.004 | Marketplace > Verify the color of all orange links', function () {
     cy.get(mainMenuDesk.marketplace).invoke('removeAttr', 'target').click()
   
     cy.get('.market-place .product h5 a')
@@ -29,7 +29,7 @@ describe('group Ark', () => {
       })
   });
 
-  it('AT_030.001|Footer>Verify redirection to terms and conditions', function () {
+  it.skip('AT_030.002|Footer>Verify redirection to terms and conditions', function () {
     cy.get('div.footer-section a[href*="Openweather_website_terms_and_conditions"]')
       .invoke("removeAttr", "target")
       .click()
@@ -54,7 +54,7 @@ describe('group Ark', () => {
       })
   })
 
-  it('AT_008.006 | Main menu > Guide > Verify The text "Weather data in a fast and easy-to-use way" is displayed.', function () {
+  it.skip('AT_008.006 | Main menu > Guide > Verify The text "Weather data in a fast and easy-to-use way" is displayed.', function () {
     cy.get('a[href="/guide"]').contains("Guide").click();
 
     cy.get('.wrapper').should('be.visible')
@@ -139,19 +139,17 @@ describe('group Ark', () => {
     cy.url().should('include', '/guide');
   })
 
-  it.skip('AT_045.005 | Main page > Section with 8-day forecast. Check display of eight days from current date', function () {
-    cy.get('.daily-container ul.day-list li > span')
-      .then($elArr => {
-        expect($elArr).to.have.length(8)
-        const startDate = new Date().getTime()
-        const formatDate = { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' };
-        let itemDate
-        cy.wrap($elArr).each(($el, $i) => {
-          itemDate = startDate + 86400000 * $i
-          itemDate = new Date(itemDate).toLocaleDateString('en', formatDate)
+  it('AT_045.005 | Main page > Section with 8-day forecast. Check display of eight days from current date', function () {
+    const startDate = new Date().getTime()
+    const formatDate = { weekday: 'short', month: 'short', day: '2-digit', timeZone: 'UTC' };
 
-          cy.wrap($el).should('include.text', itemDate)
-        })
+    cy.get('.daily-container ul.day-list li > span')
+      .should('have.length', 8)
+      .each(($el, i) => { 
+        let itemDate = startDate + 86400000 * i
+        itemDate = new Date(itemDate).toLocaleDateString('en', formatDate)
+        expect($el).to.be.visible
+        expect($el.text()).to.include(itemDate);
       })
   })
 
@@ -195,7 +193,7 @@ describe('group Ark', () => {
     cy.get('h1 span').should('have.text', 'OpenWeather')
   });
 
-  it('AT_026.001 | Maps > Check that Global Precipitation is visualized on the map', function () {
+  it.skip('AT_026.001 | Maps > Check that Global Precipitation is visualized on the map', function () {
     cy.get(mainMenuDesk.maps).click();
     cy.get('#map-wrap .global-map').should('be.visible')
 
