@@ -38,7 +38,7 @@ describe('SignIn test suit', () => {
     signInPage.elements.getForgotYourPassword().should('have.text', this.data.textForgotYourPassword)
   });
 
-  it.only('AT_006.005 | Sign in > Sign in to Your Account > Verify that after the user fills in the wrong password the alert pop-up appears', function() {
+  it('AT_006.005 | Sign in > Sign in to Your Account > Verify that after the user fills in the wrong password the alert pop-up appears', function() {
     header.clickSignInMenuLink();
     cy.url().should('eq', this.data.signInUrlUsers)
 
