@@ -338,7 +338,7 @@ describe('groupBugHunters', () => {
       expect($el.text()).to.include(this.data.userAccountMenu[index])
     })
 
-  it('AT_028.008 | Footer > About us > Verify the button "Buy by Subscription"', function() {
+  it.skip('AT_028.008 | Footer > About us > Verify the button "Buy by Subscription"', function() {
     let aboutUs = 'a[href="/about-us"]'
     let buyBySubscription = 'a[href="https://home.openweathermap.org/subscriptions"]'
 
