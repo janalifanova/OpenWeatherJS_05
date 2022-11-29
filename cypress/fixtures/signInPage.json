@@ -12,5 +12,16 @@
     "userName": "bugHunters",
     "email": "redroverschool@yahoo.com",
     "password": "123456789"
-  }
+  },
+
+  "userProfile": {
+        
+    "userName": "noGroup",
+    "email": "test.openweathermap.05@gmail.com",
+    "password": "Test@123",
+    "wrongPassword": "TestTest"
+    },
+
+  "allerInvalidEmail": "Invalid Email or password."
+    
 }

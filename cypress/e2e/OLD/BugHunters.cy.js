@@ -48,7 +48,7 @@ describe('groupBugHunters', () => {
       .should('contain', 'Precipitation, mm/h');
   })
 
-  it('AT_008.004 | Main menu > Guide | Verify the button "Subscribe to One Call by Call" is clickable and user be redirected new url', () => {
+  it.skip('AT_008.004 | Main menu > Guide | Verify the button "Subscribe to One Call by Call" is clickable and user be redirected new url', () => {
     cy.get('#desktop-menu').contains('Guide').click({
       force: true
     });
@@ -139,7 +139,7 @@ describe('groupBugHunters', () => {
     cy.get(documentationButton).should('be.visible').invoke('removeAttr', 'target').click()
   })
 
-  it('AT_008.009 | Main menu > Guide > Verify text on the page', () => {
+  it.skip('AT_008.009 | Main menu > Guide > Verify text on the page', () => {
     cy.get('#desktop-menu').contains('Guide').click({
       force: true
     });
@@ -245,7 +245,7 @@ describe('groupBugHunters', () => {
     cy.get('.scale-details:first-child').should('contain.contain.text', 'Wind speed')
   })
 
-  it('AT_056.002 | My API keys > Managing API keys> Rename an API key', function () {
+  it.skip('AT_056.002 | My API keys > Managing API keys> Rename an API key', function () {
     cy.get('.user-li a[href*=sign_in]').click()
     cy.get('.input-group #user_email').type('yurik@mailto.plus')
     cy.get('#user_password').type('12345678')
@@ -294,7 +294,7 @@ describe('groupBugHunters', () => {
     cy.get('.current-container > :nth-child(1) > h2').should('contain', city);
   })
 
-  it('AT_046.002|Click on the link “Learn more” should take user to the new page', function () {
+  it.skip('AT_046.002|Click on the link “Learn more” should take user to the new page', function () {
     cy.get('#desktop-menu [href="/our-initiatives"]').click();
     cy.get('.col-sm-12 :nth-child(9) h2>span')
       .as('Education')
