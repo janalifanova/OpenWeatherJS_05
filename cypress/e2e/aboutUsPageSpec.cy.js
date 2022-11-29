@@ -32,13 +32,12 @@ describe('About Us', () => {
         apiPage.elements.getWeatherApiTitle().should('be.visible');
     });
 
-    it.only('AT_028.008 | About us > Verify "Buy by Subscription" button redirects to subscriptions page ', function()  {
+    it('AT_028.008 | About us > Verify "Buy by Subscription" button redirects to subscriptions page ', function()  {
         footer.clickAboutUsLink();
         aboutUs.clickBuyBySubscriptionButton();
             
         cy.login(this.signIn.userProfileBugHunters.email, this.signIn.userProfileBugHunters.password)
-        //cy.loginBugHunters(this.signIn.userProfile.email, this.signIn.userProfile.password)
-
+        
         cy.url().should('be.equal', this.url.Subscriptions);
         subscriptionsPage.elements.getOneCallByCallSubscriptionPlan().should('be.visible')  
     });
