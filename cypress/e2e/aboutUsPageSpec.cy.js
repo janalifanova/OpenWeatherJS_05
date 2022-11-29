@@ -22,7 +22,6 @@ describe('About Us', () => {
             this.signIn = signIn;
         });
         cy.visit('/');
-        cy.wait(9000)
     })
 
     it('AT_028.006 | About us > Verify "Products Documentation" button redirects to API page', function() {
