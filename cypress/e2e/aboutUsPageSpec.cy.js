@@ -36,10 +36,10 @@ describe('About Us', () => {
         footer.clickAboutUsLink();
         aboutUs.clickBuyBySubscriptionButton();
             
-        cy.login(this.signIn.userProfileBugHunters.email, this.signIn.userProfileBugHunters.password)
+        cy.login(this.signIn.userProfileBugHunters.email, this.signIn.userProfileBugHunters.password);
         
         cy.url().should('be.equal', this.url.Subscriptions);
-        subscriptionsPage.elements.getOneCallByCallSubscriptionPlan().should('be.visible')  
+        subscriptionsPage.elements.getOneCallByCallSubscriptionPlan().should('be.visible');  
     });
     it('AT_028.009 | About us > Verify the button "Buy in the Marketplace" redirects to the Marketplace page', function() {
         footer.clickAboutUsLink();
