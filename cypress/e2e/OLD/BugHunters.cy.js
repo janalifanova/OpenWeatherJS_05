@@ -483,7 +483,7 @@ it('AT_033.018 | Header > Navigation > API', () => {
     cy.get('.breadcrumb-title').should('have.text', 'Technology')
   });
 
-  it.only ('AT_042.00 User page >My payments>Go to the page /payments',() => {
+  it('AT_042.00 User page >My payments>Go to the page /payments',() => {
     cy.visit('/')
     cy.get('li.user-li a[href*="sign_in"]').click()
     cy.url().should('include', '/users/sign_in')
