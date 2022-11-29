@@ -10,5 +10,6 @@
         "city": "Cambridge",
         "searchResult": "Cambridge, GB"
     },
-    "copyright": "©"
+    "copyright": "©",
+    "RGB": "rgb(235, 110, 75)"
 }

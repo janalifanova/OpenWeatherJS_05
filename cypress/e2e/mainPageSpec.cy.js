@@ -2,9 +2,11 @@
 
 import Header from "../pageObjects/Header.js";
 import MainPage from "../pageObjects/MainPage.js";
+import SolarRadiationPage from "../pageObjects/SolarRadiationPage.js";
 
 const mainPage = new MainPage();
 const header = new Header;
+const solarRadiationPage = new SolarRadiationPage();
 
 describe('mainPageSpec', () => {
     
@@ -18,6 +20,11 @@ describe('mainPageSpec', () => {
         cy.fixture('titles').then(titles => {
             this.titles = titles;
         });
+
+        cy.fixture('solarRadiationPage').then(solarRadiationPage => {
+            this.solarRadiationPage = solarRadiationPage;
+        });
+
         cy.visit('/');
     })
 
@@ -110,4 +117,13 @@ describe('mainPageSpec', () => {
         cy.title().should('eq', this.titles.copyrightTitle);
     });
 
+
+    it('AT_055.001 | Main page > Our new product > Solar Radiation API', function () {
+        mainPage.elements.getOurNewProductSubHeaderTitle()
+                .should('have.text', "new").and('have.css', 'color', this.data.RGB);
+        mainPage.clickSolarRadiationLink();
+        
+        cy.url().should('eq', this.url.SolarRadiationURL);
+        solarRadiationPage.elements.getSolarRadiationPageTitle().should('have.text', this.solarRadiationPage.solareRadiationPageTitle);
+    });
 });
