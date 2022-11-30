@@ -20,7 +20,8 @@ class Header {
         getUserMyServicesLink: () => cy.get('#user-dropdown-menu > :nth-child(1) > a'),
         getUserLogoutLink: () => cy.get('.dropdown-menu [href*="/sign_out"]'),
         getUserDropDownMyApiLink: () => cy.get('#user-dropdown-menu [href$="/api_keys"]'),
-        getPaymentMenuLink: () => cy.get('.dropdown-menu a[href="/payments"]')
+        getPaymentMenuLink: () => cy.get('.dropdown-menu a[href="/payments"]'),
+        getSupportDropDownMenuList: () => cy.get('#support-dropdown-menu li')
     };
 
     clickSupportDropDownMenu() {
