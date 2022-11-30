@@ -16,7 +16,11 @@
     "SolarRadiationURL": "https://openweathermap.org/api/solar-radiation",
     "wordpressWebsite": "https://wordpress.org/plugins/awesome-weather/",
     "widgetWPCloudyPlugin": "https://wordpress.org/plugins/wp-cloudy/",
+<<<<<<< HEAD
     "openWeatherForBusiness": "https://openweather.co.uk/",
     "mainAbout": "https://openweather.co.uk/#main_about"
 
+=======
+    "facebookUrl": "270748973021342"
+>>>>>>> 4afb379ac232749a873a8090bf77ab25ded083e5
 }
