@@ -75,3 +75,9 @@ describe('Guide page test suite', () => {
         guidePage.elements.getHowToStartText().should('have.text', this.text.howToStartText)
     })
 });
+
+it('AT_008.003 | Guide > Verify the second button "Learn more" is clickable and user will be redirected new url', function () {
+    guidePage.clickLearnMoreSecondButton();
+    cy.url().should('be.equal', this.url.ApiPage);
+    apiPage.elements.getWeatherApiTitle().should('have.text', this.data.h1Title)
+});
