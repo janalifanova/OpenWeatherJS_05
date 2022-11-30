@@ -3,9 +3,13 @@
 
 import GuidePage from "../pageObjects/GuidePage.js";
 import Header from "../pageObjects/Header.js";
+import BusinessPage from "../pageObjects/BusinessPage.js";
+import AboutBusinessPage from "../pageObjects/AboutBusinessPage.js";
 
 const guidePage = new GuidePage();
 const header = new Header();
+const businessPage = new BusinessPage();
+const aboutBusinessPage = new AboutBusinessPage();
 
 describe('Header test suit', () => {
 
@@ -14,6 +18,9 @@ describe('Header test suit', () => {
             this.url = url
         });
         cy.fixture('guidePage').then(text => {
+            this.text = text
+        });
+        cy.fixture('aboutBusinessPage').then(text => {
             this.text = text
         })
         cy.visit('/');
@@ -25,4 +32,14 @@ describe('Header test suit', () => {
     
         guidePage.elements.getPageDescription().should('have.text', this.text.pageDescriptionText).and('be.visible')
       })
+
+    it('AT_038.002 | Header > business page > About us', function () {
+
+        header.clickBusinessMenuLink();
+    
+        businessPage.clickAboutUsButton();
+    
+        cy.url().should('be.equal', this.url.mainAbout);
+        aboutBusinessPage.elements.getAboutBusinessText().should('contain', this.text.title);
+    });
 })
