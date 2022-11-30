@@ -15,7 +15,10 @@ describe('Header test suit', () => {
         });
         cy.fixture('guidePage').then(text => {
             this.text = text
-        })
+        });
+        cy.fixture('mapsPage').then(mapsData => {
+            this.mapsData = mapsData
+        });
         cy.visit('/');
     });
 
@@ -24,5 +27,11 @@ describe('Header test suit', () => {
         cy.url().should('be.equal', this.url.guidePage);
     
         guidePage.elements.getPageDescription().should('have.text', this.text.pageDescriptionText).and('be.visible')
-      })
+    })
+
+    it('AT_033.012 | Header > Navigation > Verify "Maps" menu link', function () {
+        header.clickMapsMenuLink();
+        cy.url().should('eq', this.url.mapsPageLink);
+        cy.title().should('eq', this.mapsData.pageTitle);
+    });
 })
