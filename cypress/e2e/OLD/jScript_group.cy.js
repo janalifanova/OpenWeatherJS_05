@@ -388,7 +388,7 @@ describe('Group jScript_group', () => {
         cy.get('.scale-details > :first-child').should('contain.text', this.data.mapsPagePressureLabel);
     });
     
-    it.skip('AT_048.002 | User page > Billing plans > Verify billing plans information', function () {
+    it('AT_048.002 | User page > Billing plans > Verify billing plans information', function () {
         cy.get('#desktop-menu .user-li a').click({force: true});
         cy.get('.input-group #user_email').type('3065606@gmail.com');
         cy.get('.input-group #user_password').type('Qwerty1234');
